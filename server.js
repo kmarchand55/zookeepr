@@ -1,7 +1,6 @@
-const { animals } = require('./data/animals');
 
+const { animals } = require('./data/animals');
 const express = require('express');
-const PORT = process.env.PORT || 3001;
 const app = express();
 
 function filterByQuery(query, animalsArray) {
@@ -42,14 +41,15 @@ function filterByQuery(query, animalsArray) {
     // return the filtered results:
     return filteredResults;
   }
-
-
-app.get('/api/animals',(req,res)=>{
+  
+  app.get('/api/animals', (req, res) => {
     let results = animals;
-    if(req.query){results=filterByQuery(req.query, results);
+    if (req.query) {
+      results = filterByQuery(req.query, results);
     }
-    res.json(results)
-});
+    res.json(results);
+  });
+
 app.listen(3001, () => {
-    console.log(`API server now on port ${PORT}!`);
+    console.log(`API server now on port 3001!`);
   });
